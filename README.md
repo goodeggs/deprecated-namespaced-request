@@ -14,7 +14,14 @@ npm install namespaced-request
 
 ```javascript
 var namespacedRequest = require('namespaced-request');
+var request = namespacedRequest("http://github.com/");
+
+process.stdout.pipe(request.get('/goodeggs/namespaced-request'));
+process.stdout.pipe(request.get('/goodeggs/resource-schema'));
 ```
+
+No more having to manually add the host and port! Great for cases where you have
+to do lots and lots of requests, like in tests.
 
 ## Contributing
 
