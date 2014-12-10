@@ -17,11 +17,16 @@
   },
   "homepage": "https://github.com/goodeggs/namespaced-request",
   "bugs": "https://github.com/goodeggs/namespaced-request/issues",
-  "dependencies": {},
+  "dependencies": {
+    "request": "^2.51.0"
+  },
   "devDependencies": {
     "coffee-script": ">=1.7.x",
     "mocha": "~1.x.x",
-    "jshint": "*"
+    "jshint": "*",
+    "chai": "^1.10.0",
+    "sinon": "^1.12.1",
+    "sinon-chai": "^2.6.0"
   },
   "scripts": {
     "test": "jshint lib/*.js && mocha"
