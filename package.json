@@ -1,0 +1,29 @@
+{
+  "name": "namespaced-request",
+  "version": "1.0.0",
+  "description": "Client HTTP requests with a default hostname, port, and protocol.",
+  "author": "Good Eggs <open-source@goodeggs.com>",
+  "contributors": [
+    "Max Edmands <me@maxedmands.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "request"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goodeggs/namespaced-request.git"
+  },
+  "homepage": "https://github.com/goodeggs/namespaced-request",
+  "bugs": "https://github.com/goodeggs/namespaced-request/issues",
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": ">=1.7.x",
+    "mocha": "~1.x.x",
+    "jshint": "*"
+  },
+  "scripts": {
+    "test": "jshint lib/*.js && mocha"
+  }
+}
