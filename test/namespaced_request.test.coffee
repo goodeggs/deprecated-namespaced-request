@@ -39,3 +39,15 @@ describe 'namespaced-request', ->
     r.get url: '/herp/derp'
     expect(request.Request).to.have.been.calledOnce
     expect(request.Request).to.have.been.calledWithMatch uri: "http://herp-derp.biz/herp/derp"
+
+  it 'lets you override the namespaced host', ->
+    r = namespacedRequest "http://herp-derp.biz"
+    r.get url: 'http://yerps-nerps.com/whats/up/doc'
+    expect(request.Request).to.have.been.calledOnce
+    expect(request.Request).to.have.been.calledWithMatch uri: "http://yerps-nerps.com/whats/up/doc"
+
+  it 'lets you namespace part of the path', ->
+    r = namespacedRequest "http://herp-derp.biz/foo/bar"
+    r.get url: '/baz'
+    expect(request.Request).to.have.been.calledOnce
+    expect(request.Request).to.have.been.calledWithMatch uri: "http://herp-derp.biz/foo/bar/baz"
