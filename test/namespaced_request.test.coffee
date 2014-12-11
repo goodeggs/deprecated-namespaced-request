@@ -30,3 +30,15 @@ describe 'namespaced-request', ->
 
     expect(request.Request).to.have.been.calledOnce
     expect(request.Request).to.have.been.calledWithMatch uri: "http://#{host}:#{port}/foo-bar?baz=bax"
+
+  it 'works with no supplied url', ->
+    r = namespacedRequest "http://#{host}:#{port}"
+    r.get()
+    expect(request.Request).to.have.been.calledOnce
+    expect(request.Request).to.have.been.calledWithMatch uri: "http://#{host}:#{port}/"
+
+  it 'works if you supply a URL instead of a URI object', ->
+    r = namespacedRequest "http://#{host}:#{port}"
+    r.get url: '/herp/derp'
+    expect(request.Request).to.have.been.calledOnce
+    expect(request.Request).to.have.been.calledWithMatch uri: "http://#{host}:#{port}/herp/derp"
