@@ -8,20 +8,40 @@ Client HTTP requests with a default hostname, port, and protocol.
 
 ## Usage
 
-```
-npm install namespaced-request
-```
+Super simple:
 
 ```javascript
 var namespacedRequest = require('namespaced-request');
 var request = namespacedRequest("http://github.com/");
 
 process.stdout.pipe(request.get('/goodeggs/namespaced-request'));
-process.stdout.pipe(request.get('/goodeggs/resource-schema'));
+// goes to http://github.com/goodeggs/namespaced-request
+process.stdout.pipe(request.get('/request/request'));
+// goes to http://github.com/request/request
 ```
 
 No more having to manually add the host and port! Great for cases where you have
 to do lots and lots of requests, like in tests.
+
+`namespacedRequest` returns an instance of the `request` module's request
+object. If you're curious what that looks like, check out [the documentation for
+`request`.](https://www.npmjs.com/package/request)
+
+What if you want to circumvent the namespace? Simple:
+
+```javascript
+var request = namespacedRequest("http://github.com/");
+process.stdout.pipe(request.get("https://www.npmjs.com/package/namespaced-request"));
+// goes to https://www.npmjs.com/package/namespaced-request
+```
+
+What if you want to namespace a request to a directory? You can do that too!
+
+```javascript
+var request = namespacedRequest("http://github.com/goodeggs/");
+process.stdout.pipe(request.get("resource-schema"));
+// goes to http://github.com/goodeggs/resource-schema
+```
 
 ## Contributing
 
