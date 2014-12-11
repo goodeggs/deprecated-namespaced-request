@@ -12,8 +12,21 @@ describe 'namespaced-request', ->
   beforeEach ->
     request.Request = sinon.stub()
 
-  it 'works', ->
+  it 'lets you supply a string url', ->
     r = namespacedRequest "http://#{host}:#{port}"
     r.get '/hello-world'
     expect(request.Request).to.have.been.calledOnce
     expect(request.Request).to.have.been.calledWithMatch uri: "http://#{host}:#{port}/hello-world"
+
+  it 'lets you supply a url object', ->
+    r = namespacedRequest
+      protocol: 'http:'
+      hostname: host
+      port: port
+
+    r.get uri:
+      pathname: 'foo-bar'
+      query: {baz: 'bax'}
+
+    expect(request.Request).to.have.been.calledOnce
+    expect(request.Request).to.have.been.calledWithMatch uri: "http://#{host}:#{port}/foo-bar?baz=bax"
