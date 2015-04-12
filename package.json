@@ -18,7 +18,7 @@
   "homepage": "https://github.com/goodeggs/namespaced-request",
   "bugs": "https://github.com/goodeggs/namespaced-request/issues",
   "dependencies": {
-    "request": "^2.51.0"
+    "request": ">= 2.51.0 < 2.52.0"
   },
   "devDependencies": {
     "coffee-script": ">=1.7.x",
