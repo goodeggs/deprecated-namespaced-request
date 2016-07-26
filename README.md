@@ -1,3 +1,8 @@
+# Deprecation notice
+
+In April 2015, `request` implemented `baseUrl`. You should use that feature instead of this library.
+More details here: https://github.com/request/request/pull/1469
+
 # Namespaced Request
 
 Client HTTP requests with a default hostname, port, and protocol.
